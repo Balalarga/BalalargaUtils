@@ -5,9 +5,10 @@
 
 namespace Utils
 {
+
 template<class T,
-    T* T::* ChildrenArr = &T::Children,
-    size_t ChildrenCount = sizeof T::Children,
+    T** (T::*ChildrenGetter)() = &T::Children,
+    size_t (T::*ChildrenCountGetter)() const = &T::ChildrenCount,
     T* T::* ParentRef = nullptr>
 class ArrayTree
 {
